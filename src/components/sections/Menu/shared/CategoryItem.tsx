@@ -20,7 +20,7 @@ const CategoryItem = ({ product }: Props) => {
           <span className="text-sm">{subtitle}</span>
         </Flex>
         <Flex gap={16} className="overflow-hidden flex-shrink">
-          {Array.from({ length: 80 }, (v, i) => i).map((i) => (
+          {Array.from({ length: 80 }, (_v, i) => i).map((i) => (
             <p key={i as number}>.</p>
           ))}
         </Flex>
