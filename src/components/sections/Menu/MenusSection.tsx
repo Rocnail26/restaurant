@@ -16,7 +16,11 @@ export const MenuSection = () => {
       justify="center"
       className="bg-primary w-screen md:p-6 lg:w-1/2 lg:p-6 lg:h-screen"
     >
-      <Flex vertical align="center" className="pt-4 relative w-[95%] max-w-[700px] bg-white">
+      <Flex
+        vertical
+        align="center"
+        className="pt-4 relative w-[95%] max-w-[700px] bg-white"
+      >
         <Flex vertical align="center" className="w-[100%]">
           <img src={elAsadero} alt="" className="w-[175px] h-[175px] mb-4" />
           <Flex vertical className="text-center w-[100%]">
@@ -34,11 +38,12 @@ export const MenuSection = () => {
               className="h-[280px] pt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-primary/70 scrollbar-track-gray-100"
               gap={16}
             >
-              {Object.entries(categories).map(([name, products]) => (
-                <CategoryList key={name} nameCategory={name} data={products}>
-                  {(item) => <CategoryItem product={item as Product} />}
-                </CategoryList>
-              ))}
+                
+              {Object.entries(categories).map(([name, products]) => {
+               return products.length > 0 &&  <CategoryList key={name} nameCategory={name} data={products}>
+                {(item) => <CategoryItem product={item as Product} />}
+              </CategoryList>
+              })}
             </Flex>
           </Flex>
         </Flex>
