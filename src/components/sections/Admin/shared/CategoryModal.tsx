@@ -17,7 +17,7 @@ const CategoryModal = ({ isModalOpen, handleCancel }: Props) => {
   const { addCategory } = useContext(MenuContext);
   const openNotification = (type: "success" | "error", description: string) => {
     api[type]({
-      message: `Error`,
+      message: `Notificación`,
       description,
       placement: "topRight",
     });

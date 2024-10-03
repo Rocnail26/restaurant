@@ -24,7 +24,7 @@ const defaultValues = {
 
 const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
   const [form] = Form.useForm();
-  const [api] = notification.useNotification();
+  const [api,contextHolder] = notification.useNotification();
   const { categories, clearSelectedProduct, selectedProduct, addProduct } =
     useContext(MenuContext);
   const selectCategories = Object.keys(categories).map((category) => ({
@@ -36,7 +36,7 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
   }, [form, selectedProduct]);
   const openNotification = (type: "success" | "error", description: string) => {
     api[type]({
-      message: `Error`,
+      message: `Notificación`,
       description,
       placement: "topRight",
     });
@@ -57,6 +57,7 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
       open={isModalOpen}
       onCancel={handleCancel}
     >
+      {contextHolder}
       <Form
         form={form}
         name="product-name"
