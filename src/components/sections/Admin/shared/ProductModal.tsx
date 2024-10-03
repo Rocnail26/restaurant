@@ -1,4 +1,4 @@
-import { Button, Flex, Form, Input, Modal, Select } from "antd";
+import { Button, Flex, Form, Input, Modal, notification, Select } from "antd";
 import { useContext, useEffect } from "react";
 import { MenuContext } from "../../../../providers/MenuProvider/MenuProvider";
 
@@ -24,6 +24,7 @@ const defaultValues = {
 
 const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
   const [form] = Form.useForm();
+  const [api] = notification.useNotification();
   const { categories, clearSelectedProduct, selectedProduct, addProduct } =
     useContext(MenuContext);
   const selectCategories = Object.keys(categories).map((category) => ({
@@ -33,12 +34,21 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
   useEffect(() => {
     form.setFieldsValue(selectedProduct ? selectedProduct : defaultValues);
   }, [form, selectedProduct]);
+  const openNotification = (type: "success" | "error", description: string) => {
+    api[type]({
+      message: `Error`,
+      description,
+      placement: "topRight",
+    });
+  };
   const onFinish = (values: FieldType) => {
     const id = selectedProduct ? selectedProduct.id : undefined;
     addProduct({ ...values, id });
+    openNotification("success","Producto agregado")
     form.resetFields();
     clearSelectedProduct();
   };
+  
 
   return (
     <Modal
