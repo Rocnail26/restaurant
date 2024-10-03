@@ -106,7 +106,7 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
                 message: "Porfavor agrega el precio al productos",
               },
               {
-                min: 1,
+                min: 0.1,
                 message: "el valor debe ser mayor a 0",
               },
             ]}
