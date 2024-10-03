@@ -38,7 +38,6 @@ export const MenuSection = () => {
               className="h-[280px] pt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-primary/70 scrollbar-track-gray-100"
               gap={16}
             >
-                
               {Object.entries(categories).map(([name, products]) => {
                return products.length > 0 &&  <CategoryList key={name} nameCategory={name} data={products}>
                 {(item) => <CategoryItem product={item as Product} />}
