@@ -44,9 +44,10 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
   const onFinish = (values: FieldType) => {
     const id = selectedProduct ? selectedProduct.id : undefined;
     addProduct({ ...values, id });
-    openNotification("success","Producto agregado")
+    openNotification("success", `Producto ${selectedProduct ? "editado" : "creado"}`)
     form.resetFields();
     clearSelectedProduct();
+    handleCancel()
   };
   
 
@@ -125,7 +126,7 @@ const ProductModal = ({ handleCancel, isModalOpen }: Props) => {
           <Flex gap={4} justify="end">
             <Button onClick={handleCancel}>Cancelar</Button>
             <Button htmlType="submit" variant="solid" color="danger">
-              Crear
+              {selectedProduct ? "Editar" : "Crear"} 
             </Button>
           </Flex>
         </Form.Item>
